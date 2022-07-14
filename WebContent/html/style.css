@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+body {
+	font-size: 20pt;
+}
+
+table {
+	font-family: "궁서체";
+}
+
+td {
+	font-size:  20pt;
+}
+
+span.cRed {
+	color: red;
+}
+
+span.cBlue {
+	color: blue;
+}
