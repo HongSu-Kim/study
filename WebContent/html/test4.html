@@ -21,8 +21,7 @@
 		</tr>
 		<tr>
 			<td><b>주민번호</b></td>
-			<td><input type="text" size="12">-<input type="text"
-				size="12"></td>
+			<td><input type="text" size="12">-<input type="text" size="12"></td>
 		</tr>
 		<tr height="1">
 			<td colspan="2" bgcolor="#dad6d7"></td>
@@ -38,16 +37,22 @@
 	<table style="font-size: 10px; font-family: 돋음" cellpadding="3">
 		<tr>
 			<td><b>아이디</b></td>
+			<!-- input type="text" : text를 입력받음 -->
 			<td><input type="text" style="width: 100px; height: 22px;"></td>
 		</tr>
 		<tr>
 			<td><b>비밀번호</b></td>
+			<!-- password : text를 입력받음, *로 표시 -->
 			<td><input type="password" style="width: 100px; height: 22px;"></td>
 			<td><img src="./image/btn_login.gif" /></td>
 		</tr>
 		<tr>
-			<td colspan="3" align="center"><input type="checkbox" />아이디저장 <input
-				type="checkbox" checked="checked" />보안접속</td>
+			<td colspan="3" align="center">
+				<!-- checkbox : on/off -->
+				<input type="checkbox" />아이디저장 
+				<!-- checked="checked" : 기본 선택 -->
+				<input type="checkbox" checked="checked" />보안접속
+			</td>
 		</tr>
 		<tr height="1">
 			<td colspan="3" bgcolor="#dad6d7"></td>
@@ -81,25 +86,25 @@
 	<input type="checkbox" />김유신
 	<input type="checkbox" />허준
 
-
 	<h3>파일을 선택하세요</h3>
-	<input type="file" />
-	<br /> 전화번호
+	<input type="file" /> <br />
+	
+	전화번호
 	<select>
 		<option>선택</option>
 		<option>010</option>
 		<option>070</option>
 		<option>011</option>
-	</select> -
-	<input type="text" size="4"> -
+	</select>
+	-
 	<input type="text" size="4">
-	<br /> 메모
-	<br />
-	<textarea rows="20" cols="40"></textarea>
-	<br />
+	-
+	<input type="text" size="4"> <br />
+	
+	메모 <br />
+	<textarea rows="20" cols="40"></textarea> <br />
 
 	<input type="button" value="보내기" />
-
 	<button>전송</button>
 
 	<br />
