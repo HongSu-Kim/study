@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>네이버 : 회원가입</title>
+
+<link rel="stylesheet" type="text/css" href="naverStyle.css">
+
+<script type="text/javascript" src="naverScript.js"></script>
+
+</head>
+<body bgcolor="#F5F6F7">
+<center>
+	<form action="" name="myForm">
+		<div style="width: 460px; padding: 50px">
+
+			<div>
+				<a href="https://www.naver.com/"><img alt="NAVER" src="./naverImage/naver.png" width="240px"></a>
+			</div>
+
+			<div>
+				<h4 id="head">아이디</h4>
+				<p id="box" onclick="inputFocus('id')">
+					<input type="text" name="id" width="310px" onfocus="inputHighlight(this.name)"/>
+					<span style="float:right; color: #8E8E8E;">@naver.com</span>
+				</p>
+			</div>
+
+			<div>
+				<h4 id="head">비밀번호</h4>
+				<p id="box" onclick="inputFocus('pwd')">
+					<input type="password" name="pwd"/>
+					<img alt="pwd" src="./naverImage/pwd.png" height="25px" align="right">
+				</p>
+			</div>
+
+			<div>
+				<h4 id="head">비밀번호 재확인</h4>
+				<p id="box" onclick="inputFocus('pwdc')">
+					<input type="password"  name="pwdc"/>
+					<img alt="pwdc" src="./naverImage/pwdc.png" height="25px" align="right">
+				</p>
+			</div>
+
+			<div>
+				<h4 id="head">이름</h4>
+				<p id="box" onclick="inputFocus('name')">
+					<input type="text" name="name"/>
+				</p>
+			</div>
+
+			<div>
+				<h4 id="head">생년월일</h4>
+				<p style="align-content: center;">
+					<span id="box" style="width: 115px; vertical-align: middle; float: left;" onclick="inputFocus('year')">
+						<input type="text" name="year" size="10" maxlength="4"/>
+					</span>
+					<span id="box" style="width: 115px;" onclick="inputFocus('month')">
+						<select id="month" name="month">
+							<option value="">월</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+					</span>
+					<span id="box" style="width: 115px; vertical-align: middle; float: right;" onclick="inputFocus('day')">
+						<input type="text" name="day" size="10" maxlength="2"/>
+					</span>
+				</p>
+			</div>
+
+			<div>
+				<h4 id="head">본인 확인 이메일<a style="font-size: 12px; color: gray;">(선택)</a></h4>
+				<p id="box" onclick="inputFocus('email')">
+					<span><input type="text" name="email"/></span>
+				</p>
+			</div>
+
+			<div>
+				<h4 id="head">휴대전화</h4>
+				<p id="box" onclick="inputFocus('tel1')">
+					<select id="tel1" name="tel1">
+						<option>네덜란드 +31</option>
+						<option selected="selected">대한민국 +82</option>
+						<option>미국/캐나다 +1</option>
+						<option>일본 +81</option>
+						<option>중국 + 86</option>
+						<option>프랑스 +33</option>
+					</select>
+				</p>
+				<span>
+					<span id="box" style="width: 310px; float: left;" onclick="inputFocus('tel2')">
+						<input type="text" name="tel2" align="left" style="width: 320px;">
+					</span>
+					<a href="javascript:getCheckNum();" id="button"><b>인증번호 받기</b></a>
+				</span>
+				<p id="box" onclick="inputFocus('checkNum')">
+					<input type="text" name="checkNum"/>
+				</p>
+			</div>
+
+			<div align="center">
+				<a href="javascript:check();" id="button" style="width: 462px; font-size: 20px;"><b>가입하기</b></a>
+			</div>
+			
+			<div style="font-size: 12px; color: #7E7E7E">
+				<p>
+					<a>이용약관</a> <img alt="bar" src="./naverImage/bar.png" height=12px;/> 
+					<a><b>개인정보처리방침</b></a> <img alt="bar" src="./naverImage/bar.png" height=12px;/> 
+					<a>책임의 한계와 법적고지</a> <img alt="bar" src="./naverImage/bar.png" height=12px;/> 
+					<a>회원정보 고객센터</a>
+				</p>
+				<p>
+					<a><img alt="naver" src="./naverImage/naver.png" height="15px"></a> Copyright <a><b>NAVER Corp.</b></a> All Rights Reserved.
+				</p>
+			</div>
+		</div>
+	</form>
+</center>
+</body>
+</html>
