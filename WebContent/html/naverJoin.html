@@ -11,52 +11,72 @@
 </head>
 <body bgcolor="#F5F6F7">
 <center>
-	<form action="" name="myForm">
-		<div style="width: 460px; padding: 50px">
-
-			<div>
-				<a href="https://www.naver.com/"><img alt="NAVER" src="./naverImage/naver.png" width="240px"></a>
+	<form action="" id="myForm">
+		<div style="width: 460px; padding-top: 60px;">
+			<div class="row">
+				<a href="https://www.naver.com/"><img alt="NAVER" src="./naverImage/naver1.png"></a>
 			</div>
 
-			<div>
-				<h4 id="head">아이디</h4>
-				<p id="box" onclick="inputFocus('id')">
-					<input type="text" name="id" width="310px" onfocus="inputHighlight(this.name)"/>
-					<span style="float:right; color: #8E8E8E;">@naver.com</span>
+			<div class="row">
+				<h4 class="head"><label for="id">아이디</label></h4>
+				<p class="box" id="idBox" onclick="inputFocus('id')">
+					<input type="text" id="id" maxlength="20" onblur="check(this.id)" onfocus="inputHighlight(this.id)"/>
+					<span style="float: right; color: #8E8E8E;">@naver.com</span>
+				</p>
+				<p class="msg">
+					<span id="idMsgNull" style="display: none;">필수정보입니다.</span>
+					<span id="idMsgErr" style="display: none;">5~20자로 입력해주세요.</span>
 				</p>
 			</div>
 
-			<div>
-				<h4 id="head">비밀번호</h4>
-				<p id="box" onclick="inputFocus('pwd')">
-					<input type="password" name="pwd"/>
-					<img alt="pwd" src="./naverImage/pwd.png" height="25px" align="right">
+			<div class="row">
+				<h4 class="head"><label for="pwd">비밀번호</label></h4>
+				<p class="box" id="pwdBox" onclick="inputFocus('pwd')">
+					<input type="password" id="pwd" maxlength="16" onblur="check(this.id)" onfocus="inputHighlight(this.id)"/>
+					<img alt="pwd1" src="./naverImage/pwd1.png" class="relativeImage" width="21px" align="right">
+					<img alt="pwd2" src="./naverImage/pwd2.png" class="relativeImage" id="pwd2Image" style="display: none; left: 21px" width="21px" align="right">
+					<img alt="pwd3" src="./naverImage/pwd3.png" class="relativeImage" id="pwd3Image" style="display: none; left: 21px" width="21px" align="right">
+					<span class="relativeText" id="pwd2Text" style="color: #00C850;">안전</span>
+					<span class="relativeText" id="pwd3Text" style="color: #FF0000;">사용불가</span>
+				</p>
+				<p class="msg">
+					<span id="pwdMsgNull" style="display: none;">필수정보입니다.</span>
+					<span id="pwdMsgErr" style="display: none;">8~16자로 입력해주세요.</span>
 				</p>
 			</div>
 
-			<div>
-				<h4 id="head">비밀번호 재확인</h4>
-				<p id="box" onclick="inputFocus('pwdc')">
-					<input type="password"  name="pwdc"/>
-					<img alt="pwdc" src="./naverImage/pwdc.png" height="25px" align="right">
+			<div class="row">
+				<h4 class="head"><label for="pwdc">비밀번호 재확인</label></h4>
+				<p class="box" id="pwdcBox" onclick="inputFocus('pwdc')">
+					<input type="password"  id="pwdc" maxlength="16" onblur="check(this.id)" onfocus="inputHighlight(this.id)"/>
+					<img alt="pwdc1" src="./naverImage/pwdc1.png" class="relativeImage" width="21px" align="right">
+					<img alt="pwdc2" src="./naverImage/pwdc2.png" class="relativeImage" id="pwdc2Image" style="display: none; left: 21px" width="21px" align="right">
+				</p>
+				<p class="msg">
+					<span id="pwdcMsgNull" style="display: none;">필수정보입니다.</span>
+					<span id="pwdcMsgErr" style="display: none;">비밀번호가 일치하지 않습니다.</span>
 				</p>
 			</div>
 
-			<div>
-				<h4 id="head">이름</h4>
-				<p id="box" onclick="inputFocus('name')">
-					<input type="text" name="name"/>
+			<div class="row">
+				<h4 class="head"><label for="name">이름</label></h4>
+				<p class="box" id="nameBox" onclick="inputFocus('name')">
+					<input type="text" id="name" onblur="check(this.id)" onfocus="inputHighlight(this.id)"/>
+				</p>
+				<p class="msg">
+					<span id="nameMsgNull" style="display: none;">필수정보입니다.</span>
 				</p>
 			</div>
 
-			<div>
-				<h4 id="head">생년월일</h4>
-				<p style="align-content: center;">
-					<span id="box" style="width: 115px; vertical-align: middle; float: left;" onclick="inputFocus('year')">
-						<input type="text" name="year" size="10" maxlength="4"/>
+			<div class="row">
+				<h4 class="head"><label for="year">생년월일</label></h4>
+				<p style="margin: 0px">
+					<span class="box yearBox" id="yearBox" onclick="inputFocus('year')">
+						<input type="text" id="year" maxlength="4" style="width: 85px; position: relative;" onblur="check(this.id)" onkeyup="infoNone(this.id)" onfocus="inputHighlight(this.id)"/>
+						<input type="text" class="relativeText" id="yearInfo" value="년(4자)" style="width: 85px;" readonly="readonly">
 					</span>
-					<span id="box" style="width: 115px;" onclick="inputFocus('month')">
-						<select id="month" name="month">
+					<span class="box monthBox" id="monthBox" onclick="inputFocus('month')">
+						<select class="monthSel" id="month" onblur="check(this.id)" onfocus="inputHighlight(this.id)">
 							<option value="">월</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -72,23 +92,48 @@
 							<option value="12">12</option>
 						</select>
 					</span>
-					<span id="box" style="width: 115px; vertical-align: middle; float: right;" onclick="inputFocus('day')">
-						<input type="text" name="day" size="10" maxlength="2"/>
+					<span class="box dayBox" id="dayBox" onclick="inputFocus('day')">
+						<input type="text" id="day" maxlength="2" style="width: 85px; position: relative;" onblur="check(this.id)" onkeyup="infoNone(this.id)" onfocus="inputHighlight(this.id)"/>
+						<input type="text" class="relativeText" id="dayInfo" value="일" style="width: 85px;" readonly="readonly">
 					</span>
 				</p>
+				<p class="msg">
+					<span id="yearMsgErr" style="display: none;">태어난 년도 4자리를 정확하게 입력하세요.</span>
+					<span id="monthMsgErr" style="display: none;">태어난 월을 선택하세요.</span>
+					<span id="dayMsgErr" style="display: none;">태어난 일(날짜) 2자리를 정확하게 입력하세요.</span>
+				</p>
 			</div>
-
-			<div>
-				<h4 id="head">본인 확인 이메일<a style="font-size: 12px; color: gray;">(선택)</a></h4>
-				<p id="box" onclick="inputFocus('email')">
-					<span><input type="text" name="email"/></span>
+			
+			<div class="row">
+				<h4 class="head"><label for="gender">성별</label></h4>
+				<p class="box" id="genderBox" onclick="inputFocus('gender')">
+					<select class="tel1Sel" id="gender" onblur="check(this.id)" onfocus="inputHighlight(this.id)">
+						<option value="">성별</option>
+						<option value="남자">남자</option>
+						<option value="여자">여자</option>
+						<option value="선택안함">선택안함</option>
+					</select>
+				</p>
+				<p class="msg">
+					<span id="genderMsgNull" style="display: none;">필수정보입니다.</span>
 				</p>
 			</div>
 
-			<div>
-				<h4 id="head">휴대전화</h4>
-				<p id="box" onclick="inputFocus('tel1')">
-					<select id="tel1" name="tel1">
+			<div class="row">
+				<h4 class="head"><label for="email">본인 확인 이메일</label><a style="font-size: 12px; color: gray;">(선택)</a></h4>
+				<p class="box" id="emailBox" onclick="inputFocus('email')">
+					<input type="text" id="email" onblur="check(this.id)" onkeyup="infoNone(this.id)" onfocus="inputHighlight(this.id)"/>
+						<input type="text" class="relativeText" id="emailInfo" value="선택입력" readonly="readonly">
+				</p>
+				<p class="msg">
+					<span id="genderMsgErr" style="display: none;">이메일 주소를 다시 확인해주세요.</span>
+				</p>
+			</div>
+
+			<div class="row">
+				<h4 class="head"><label for="tel2">휴대전화</label></h4>
+				<p class="box" id="tel1Box" onclick="inputFocus('tel1')">
+					<select class="tel1Sel" id="tel1" onblur="check(this.id)" onfocus="inputHighlight(this.id)">
 						<option>네덜란드 +31</option>
 						<option selected="selected">대한민국 +82</option>
 						<option>미국/캐나다 +1</option>
@@ -97,30 +142,38 @@
 						<option>프랑스 +33</option>
 					</select>
 				</p>
-				<span>
-					<span id="box" style="width: 310px; float: left;" onclick="inputFocus('tel2')">
-						<input type="text" name="tel2" align="left" style="width: 320px;">
+				<p>
+					<span class="box tel2Box" id="tel2Box" onclick="inputFocus('tel2')">
+						<input type="text" class="tel2Input" id="tel2" align="left" style="width: 320px;" onblur="check(this.id)" onkeyup="infoNone(this.id)" onfocus="inputHighlight(this.id)">
+						<input type="text" class="relativeText" id="tel2Info" value="전화번호 입력" readonly="readonly">
 					</span>
-					<a href="javascript:getCheckNum();" id="button"><b>인증번호 받기</b></a>
-				</span>
-				<p id="box" onclick="inputFocus('checkNum')">
-					<input type="text" name="checkNum"/>
+					<a href="javascript:getCheckNum();" class="button"><b>인증번호 받기</b></a>
+				</p>
+				<p class="box" id="checkNumBox" onclick="inputFocus('checkNum')"  style="margin-bottom: 15px;">
+					<input type="text" id="checkNum" onblur="check(this.id)" onfocus="infoNone(this.id), inputHighlight(this.id)" onkeyup="infoNone(this.id)"/>
+						<input type="text" class="relative" id="checkNumInfo" value="인증번호를 입력하세요" readonly="readonly">
+				</p>
+				<p class="msg">
+					<span id="tel2MsgNull" style="display: none;">필수정보입니다.</span>
+					<span id="tel2MsgErr" style="display: none;">형식에 맞지 않는 번호입니다.</span>
+					<span id="checkNumMsgErr" style="display: none;">인증번호를 다시 확인해주세요.</span>
 				</p>
 			</div>
 
 			<div align="center">
-				<a href="javascript:check();" id="button" style="width: 462px; font-size: 20px;"><b>가입하기</b></a>
+				<a href="javascript:join();" class="button" style="width: 462px; font-size: 20px; margin-bottom: 30px;"><b>가입하기</b></a>
 			</div>
 			
-			<div style="font-size: 12px; color: #7E7E7E">
+			<div>
 				<p>
-					<a>이용약관</a> <img alt="bar" src="./naverImage/bar.png" height=12px;/> 
-					<a><b>개인정보처리방침</b></a> <img alt="bar" src="./naverImage/bar.png" height=12px;/> 
-					<a>책임의 한계와 법적고지</a> <img alt="bar" src="./naverImage/bar.png" height=12px;/> 
-					<a>회원정보 고객센터</a>
+					<a href="https://policy.naver.com/rules/service.html" class="atag">이용약관</a> <img alt="bar" src="./naverImage/bar.png" height=12px;/> 
+					<a href="https://policy.naver.com/policy/privacy.html" class="atag"><b>개인정보처리방침</b></a> <img alt="bar" src="./naverImage/bar.png" height=12px;/> 
+					<a href="https://policy.naver.com/rules/disclaimer.html" class="atag">책임의 한계와 법적고지</a> <img alt="bar" src="./naverImage/bar.png" height=12px;/> 
+					<a href="https://help.naver.com/support/service/main.help?serviceNo=532&_membership_p.membership_p.membership_26&from=alias"  class="atag" target="_blank">회원정보 고객센터</a>
 				</p>
-				<p>
-					<a><img alt="naver" src="./naverImage/naver.png" height="15px"></a> Copyright <a><b>NAVER Corp.</b></a> All Rights Reserved.
+				<p style="font-size: 12px;">
+					<a><img alt="naver" src="./naverImage/naver1.png" height="15px"></a> 
+					Copyright <a href="https://www.navercorp.com/" class="atag"><b>NAVER Corp.</b></a> All Rights Reserved.
 				</p>
 			</div>
 		</div>

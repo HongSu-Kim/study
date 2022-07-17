@@ -1,33 +1,70 @@
 @charset "UTF-8";
 
-input {
-	font-size: 15px;
-	border-width: 0px;
-	float: left;
-	outline: none;
-	cursor: pointer;
+.row {
+	display: inline-block;
+	width: 460px;
 }
 
-#box {
+.box {
 	display: inline-block;
 	width: 430px;
 	height: 20px;
 	background-color: white;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #DADADA;
-	padding: 15px;
+	outline-width: 1px;
+	outline-style: solid;
+	outline-color: #DADADA;
+	padding: 14px;
 	margin: 0px;
+	cursor: pointer;
+	padding: 15px;
+}
+
+.yearBox {
+	width: 110px;
+	vertical-align: middle;
+	float: left;
+}
+
+.monthBox {
+	width: 110px;
+	vertical-align: middle;
+}
+
+.dayBox {
+	width: 110px;
+	vertical-align: middle;
+	float: right;
+}
+
+.tel2Box {
+	width: 310px;
+	float: left;
 	margin-bottom: 15px;
+}
+
+label {
 	cursor: pointer;
 }
 
-#head {
+.head {
 	text-align: left;
+	margin: 0px;
+	margin-top: 20px;
 	margin-bottom: 10px;
 }
 
-#month {
+input {
+	font-size: 15px;
+	width: 310px;
+	border: none;
+	padding: 1px;
+	float: left;
+	outline: none;
+	cursor: pointer;
+	float: left;
+}
+
+.monthSel {
 	width: 85px;
 	height: 20px;
 	font-size: 15px;
@@ -36,7 +73,7 @@ input {
 	outline: none;
 }
 
-#tel1 {
+.tel1Sel {
 	width: 410px;
 	height: 20px;
 	font-size: 15px;
@@ -45,7 +82,7 @@ input {
 	outline: none;
 }
 
-#button {
+.button {
 	width: 110px;
 	height: 35px;
 	background-color: #03C75A;
@@ -56,3 +93,38 @@ input {
 	text-decoration: none;
 }
 
+.relativeText {
+	font-size: 15px;
+	color: gray;
+	position: relative;
+	bottom: 19px;
+	left: 2px;
+}
+
+.relativeImage {
+	position: relative;
+	bottom: 2px;
+}
+
+.relativeText {
+	position: relative;
+	font-size: 12px;
+	float: right;
+	top: 3px;
+	left: 15px;
+	display: none;
+}
+
+.msg {
+	font-size: 12px;
+	color: #FF0000;
+	float: left;
+	margin: 0px;
+	margin-top: 5px;
+}
+
+.atag {
+	font-size: 12px;
+	color: #666666;
+	text-decoration: none;
+}
