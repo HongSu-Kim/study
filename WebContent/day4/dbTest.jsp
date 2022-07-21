@@ -1,3 +1,4 @@
+<%@page import="com.util.DBConn"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -11,10 +12,7 @@
 </head>
 <body>
 
-<h1>메인 페이지</h1>
-1. <a href="<%=cp%>/score/list.jsp">성적처리 게시판(SCORE)</a><br/>
-2. <a href="<%=cp%>/naver/list.jsp">네이버 회원관리(NAVER)</a><br/>
-3. <a href="<%=cp%>/board/list.jsp?pageNum=1">게시판(BOARD)</a><br/>
+<%=DBConn.getConnection() %>
 
 </body>
 </html>

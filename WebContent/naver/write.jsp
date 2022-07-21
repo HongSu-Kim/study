@@ -16,10 +16,10 @@
 
 </head>
 <body>
-	<form action="<%=cp%>/naver/naverTest.jsp" method="get" name="myForm">
+	<form action="<%=cp%>/naver/write_ok.jsp" method="post" name="myForm">
 		<div align="center" style="width: 460px; padding-top: 60px; margin: auto;">
 			<div class="row">
-				<a href="https://www.naver.com/"><img alt="NAVER" src="./naverImage/naver1.png"></a>
+				<a href="https://www.naver.com/"><img alt="NAVER" src="./naverImage/naver.png"></a>
 			</div>
 			
 			<div class="row">
@@ -78,30 +78,30 @@
 			<div class="row">
 				<h4 class="head"><label for="year">생년월일</label></h4>
 				<p style="margin: 0px">
-					<span class="box yearBox" id="yearBox" onclick="inputFocus('year')">
+					<span class="box box3 leftBox" id="yearBox" onclick="inputFocus('year')">
 						<input type="text" id="year" name="year" maxlength="4" style="width: 85px; position: relative;" onblur="check(this.id)" onkeyup="infoNone(this.id)" onfocus="inputHighlight(this.id)"/>
 						<input type="text" class="relativeInput" id="yearInfo" value="년(4자)" style="width: 85px;" readonly="readonly">
 					</span>
-					<span class="box monthBox" id="monthBox" onclick="inputFocus('month')">
+					<span class="box box3" id="monthBox" onclick="inputFocus('month')">
 						<select class="monthSel" id="month" name="month" onblur="check(this.id)" onfocus="inputHighlight(this.id)">
 							<option value="">월</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
+							<option value="01">01</option>
+							<option value="02">02</option>
+							<option value="03">03</option>
+							<option value="04">04</option>
+							<option value="05">05</option>
+							<option value="06">06</option>
+							<option value="07">07</option>
+							<option value="08">08</option>
+							<option value="09">09</option>
 							<option value="10">10</option>
 							<option value="11">11</option>
 							<option value="12">12</option>
 						</select>
 					</span>
-					<span class="box dayBox" id="dayBox" onclick="inputFocus('day')">
+					<span class="box box3 rigthBox" id="dayBox" style="float: right;" onclick="inputFocus('day')">
 						<input type="text" id="day" name="day" maxlength="2" style="width: 85px; position: relative;" onblur="check(this.id)" onkeyup="infoNone(this.id)" onfocus="inputHighlight(this.id)"/>
-						<input type="text" class="relativeInput" id="dayInfo" value="일" style="width: 85px;" readonly="readonly">
+						<input type="text" class="relativeInput" id="dayInfo" value="일(2자)" style="width: 85px;" readonly="readonly">
 					</span>
 				</p>
 				<p class="msg">
@@ -129,7 +129,7 @@
 			</div>
 	
 			<div class="row">
-				<h4 class="head"><label for="email">본인 확인 이메일</label><a style="font-size: 12px; color: gray;">(선택)</a></h4>
+				<h4 class="head"><label for="email">본인 확인 이메일</label><span style="font-size: 12px; color: gray;">(선택)</span></h4>
 				<p class="box" id="emailBox" onclick="inputFocus('email')">
 					<input type="text" id="email" name="email" onblur="check(this.id)" onkeyup="infoNone(this.id)" onfocus="inputHighlight(this.id)"/>
 						<input type="text" class="relativeInput" id="emailInfo" value="선택입력" readonly="readonly">
@@ -156,7 +156,7 @@
 						<input type="text" id="tel" name="tel" align="left" style="width: 320px;" maxlength="11" onblur="check(this.id)" onkeyup="infoNone(this.id)" onfocus="inputHighlight(this.id)">
 						<input type="text" class="relativeInput" id="telInfo" value="전화번호 입력" readonly="readonly">
 					</span>
-					<a href="javascript:getCheckNum();" class="button"><b>인증번호 받기</b></a>
+					<a href="javascript:getCheckNum();" class="button" style="float: right;"><b>인증번호 받기</b></a>
 				</p>
 				<p class="box" id="checkNumBox" onclick="inputFocus('checkNum')">
 					<input type="text" id="checkNum" maxlength="4" onblur="check(this.id)" onfocus="infoNone(this.id), inputHighlight(this.id)" onkeyup="infoNone(this.id)"/>
@@ -175,7 +175,7 @@
 			</div>
 			
 			<div class="row" style="margin-top: 30px;">
-					<a href="javascript:join();" class="button" style="width: 460px; font-size: 20px; margin-bottom: 30px;"><b>가입하기</b></a>
+				<a href="javascript:write();" class="button" style="width: 460px; font-size: 20px; margin-bottom: 30px;"><b>가입하기</b></a>
 			</div>
 			
 			<div>
@@ -186,7 +186,7 @@
 					<a href="https://help.naver.com/support/service/main.help?serviceNo=532&_membership_p.membership_p.membership_26&from=alias"  class="atag" target="_blank">회원정보 고객센터</a>
 				</p>
 				<p style="font-size: 12px;">
-					<a><img alt="naver" src="./naverImage/naver1.png" height="15px"></a> 
+					<a><img alt="naver" src="./naverImage/naver.png" height="15px"></a> 
 					Copyright <a href="https://www.navercorp.com/" class="atag"><b>NAVER Corp.</b></a> All Rights Reserved.
 				</p>
 			</div>

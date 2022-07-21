@@ -1,13 +1,14 @@
 package com.naver;
 
-public class NaverVO {
+public class NaverDTO {
 
 	private String id;
 	private String pwd;
 	private String name;
-	private String year;
-	private String month;
-	private String day;
+	private int year;
+	private int month;
+	private int day;
+	private String gender;
 	private String email;
 	private String tel;
 
@@ -35,35 +36,39 @@ public class NaverVO {
 		this.name = name;
 	}
 
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
 
-	public void setYear(String year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 
-	public String getMonth() {
+	public int getMonth() {
 		return month;
 	}
 
-	public void setMonth(String month) {
+	public void setMonth(int month) {
 		this.month = month;
 	}
 
-	public String getDay() {
+	public int getDay() {
 		return day;
 	}
 
-	public void setDay(String day) {
+	public void setDay(int day) {
 		this.day = day;
 	}
 
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	public String getEmail() {
-
-		if (email != "" || email != null)
-			return "입력안함";
-
 		return email;
 	}
 
@@ -77,30 +82,6 @@ public class NaverVO {
 
 	public void setTel(String tel) {
 		this.tel = tel;
-	}
-
-	public String getBirth() {
-
-		String birth = year + "-";
-
-		if (month.length() < 2) {
-			birth += "0";
-		}
-		birth += month + "-";
-
-		if (day.length() < 2) {
-			birth += "0";
-		}
-		birth += day;
-
-		return birth;
-	}
-
-	public String getTel_() {
-
-		String tel_ = tel.substring(0, 3) + "-" + tel.substring(3, 7) + "-" + tel.substring(7);
-
-		return tel_;
 	}
 
 }

@@ -19,8 +19,8 @@ function infoNone(id) {
 
 function getCheckNum() {
 
-	if (check("tel2")) {
-		document.getElementById('tel2').focus();
+	if (check("tel")) {
+		document.getElementById('tel').focus();
 		return;
 	}
 
@@ -29,9 +29,11 @@ function getCheckNum() {
 	document.getElementById('checkNum').value = checkNum;
 	document.getElementById('checkNum').focus();
 	document.getElementById("checkNumMsgChe").style.display = "block";
+	
 }
 
 function check(id) {
+	
 	document.getElementById(id + "Box").style = "outline-color: #DADADA";
 
 	if (id == 'id') {
@@ -141,13 +143,13 @@ function check(id) {
 			document.getElementById("yearMsgErr").style.display = "block";
 			return true;
 			
-		} else if ((id == 'year' || id == 'month' || id == 'day')
+			} else if ((id == 'year' || id == 'month' || id == 'day')
 				&& !document.getElementById('month').value) {
 			
 			document.getElementById("monthMsgErr").style.display = "block";
 			return true;
 
-		} else if (!document.getElementById('day').value 
+		} else if (document.getElementById('day').value.length < 3
 				|| isNaN(parseInt(document.getElementById('day').value))) {
 			
 			document.getElementById("dayMsgErr").style.display = "block";
@@ -170,7 +172,7 @@ function check(id) {
 	// email
 	} else if (id == 'email') {
 
-		var regEmail = /^[a-zA-Z0-9]*@[0-9a-zA-Z](\.[0-9a-zA-Z])*$/;
+		var regEmail = /^[a-zA-Z0-9]*@[0-9a-zA-Z]*(\.?[0-9a-zA-Z])*$/;
 		
 		document.getElementById(id + "MsgErr").style.display = "none";
 		
@@ -182,39 +184,67 @@ function check(id) {
 		}
 
 	// tel
-	} else if (id == 'tel2' || id == 'checkNum') {
+	} else if (id == 'tel' || id == 'checkNum') {
 
-		document.getElementById("tel2MsgNull").style.display = "none";
-		document.getElementById("tel2MsgErr").style.display = "none";
-		document.getElementById("checkNumMsgErr").style.display = "none";
+		document.getElementById("telMsgNull").style.display = "none";
+		document.getElementById("telMsgErr").style.display = "none";
+		try {
+			document.getElementById("checkNumMsgErr").style.display = "none";
+		} catch (e) {
+		}
 		
-		if(!document.getElementById('tel2').value) {
-
-			document.getElementById("checkNumMsgChe").style.display = "none";
-			document.getElementById("tel2MsgNull").style.display = "block";
+		if(!document.getElementById('tel').value) {
+				
+			try {
+				document.getElementById("checkNumMsgChe").style.display = "none";
+			} catch (e) {
+			}
+			document.getElementById("telMsgNull").style.display = "block";
 			return true;
 			
-		} else if (document.getElementById('tel2').value.length != 11 || isNaN(parseInt(document.getElementById('tel2').value))) {
+		} else if (document.getElementById('tel').value.length != 11 || isNaN(parseInt(document.getElementById('tel').value))) {
 
-			document.getElementById("checkNumMsgChe").style.display = "none";
-			document.getElementById("tel2MsgErr").style.display = "block";
+			try {
+				document.getElementById("checkNumMsgChe").style.display = "none";
+			} catch (e) {
+			}
+			document.getElementById("telMsgErr").style.display = "block";
 			return true;
 			
 		} else if (id == 'checkNum' && checkNum != document.getElementById('checkNum').value) {
-
+			
 			document.getElementById("checkNumMsgChe").style.display = "none";
 			document.getElementById("checkNumMsgErr").style.display = "block";
 			return true;
 			
 		}
 	
+	} else if (id == 'opwd') {
+
+		var regOpwd = /^[a-zA-Z0-9]*$/;
+		
+		document.getElementById(id + "MsgNull").style.display = "none";
+		document.getElementById(id + "MsgErr").style.display = "none";
+		
+		if (!document.getElementById(id).value) {
+			
+			document.getElementById(id + "MsgNull").style.display = "block";
+			return true;
+			
+		} else if (document.getElementById(id).value.length < 8 || !regOpwd.test(document.getElementById(id).value)) {
+
+			document.getElementById(id + "MsgErr").style.display = "block";
+			return true;
+			
+		}
+
 	}
 	
 	return false;
 
 }
 
-function join() {
+function write() {
 
 	var result = true;
 
@@ -223,8 +253,8 @@ function join() {
 		result = false;
 	}
 
-	if (check('tel2')) {
-		document.getElementById('tel2').focus();
+	if (check('tel')) {
+		document.getElementById('tel').focus();
 		result = false;
 	}
 
@@ -275,6 +305,68 @@ function join() {
 	if (result) {
 		alert("회원가입!")
 		document.myForm.submit();
+	}
+
+}
+
+function update() {
+	
+	var result = true;
+
+	if (check('tel')) {
+		document.getElementById('tel').focus();
+		result = false;
+	}
+
+	if (check('email')) {
+		document.getElementById('email').focus();
+		result = false;
+	}
+
+	if (check('gender')) {
+		document.getElementById('gender').focus();
+		result = false;
+	}
+
+	if (check('day')) {
+		document.getElementById('day').focus();
+		result = false;
+	}
+
+	if (check('month')) {
+		result = false;
+	}
+
+	if (check('year')) {
+		document.getElementById('year').focus();
+		result = false;
+	}
+
+	if (check('name')) {
+		document.getElementById('name').focus();
+		result = false;
+	}
+
+	if (check('pwdc')) {
+		document.getElementById('pwdc').focus();
+		result = false;
+	}
+
+	if (check('pwd')) {
+		document.getElementById('pwd').focus();
+		result = false;
+	}
+	
+	if (check('opwd')) {
+		document.getElementById('opwd').focus();
+		result = false;
+	}
+
+	if (result) {
+		alert("수정완료!")
+		document.myForm.submit();
+	} else {
+		alert("오류!")
 	}
 
 }
