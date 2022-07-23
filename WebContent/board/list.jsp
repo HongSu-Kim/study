@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="com.util.MyPage"%>
 <%@page import="com.board.BoardDTO"%>
 <%@page import="java.util.List"%>
@@ -14,12 +15,55 @@
 
 	MyPage myPage = new MyPage();
 	
-	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
-	int totalPage = myPage.getPageCount(5, dao.getMaxNum());
+	// MyPage에서 넘어온 pageNum
+	String pageNum = request.getParameter("pageNum");
+	int currentPage = 1;
+	if (pageNum != null) {
+		currentPage = Integer.parseInt(pageNum);
+	}
 	
-	String pageIndexList = myPage.pageIndexList(pageNum,totalPage,"list.jsp");
+	// 검색 --------------------------------------------------
 	
-	List<BoardDTO> lists = dao.getLists();
+	String searchKey = request.getParameter("searchKey");
+	String searchValue = request.getParameter("searchValue");
+	
+	if (searchValue != null) {
+		
+		// GET방식은 한글을 인코딩해서 보냄
+		if(request.getMethod().equalsIgnoreCase("GET")) {
+			searchValue = URLDecoder.decode(searchValue, "UTF-8");
+		}
+		
+	} else {
+		searchKey = "subject";
+		searchValue = "";
+	}
+	
+	// 검색 --------------------------------------------------
+	
+	// 전체데이터 갯수
+	int dataCount = dao.getDataCount(searchKey, searchValue);
+	
+	// 하나의 페이지에 보여줄 데이터 갯수
+	int numPerPage = 3;
+	
+	// 전체페이지 갯수
+	int totalPage = myPage.getPageCount(numPerPage, dataCount);
+	
+	// 삭제시에 페이지수가 줄었을때 처리
+	if (currentPage > totalPage){
+		currentPage = totalPage;
+	}
+	
+	// 데이터베이스에서 가져올 rownum의 사작과 끝
+	int start = (currentPage - 1) * numPerPage + 1;
+	int end = currentPage * numPerPage;
+	
+	List<BoardDTO> lists = dao.getLists(start, end, searchKey, searchValue);
+	
+	// 페이징 처리
+	String listUrl = "list.jsp";
+	String pageIndexList = myPage.pageIndexList(currentPage,totalPage,listUrl);
 	
 	DBConn.close();
 %>
@@ -32,26 +76,36 @@
 <link rel="stylesheet" type="text/css" href="<%=cp%>/board/css/style.css"/>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/board/css/list.css"/>
 
+<script type="text/javascript">
+	function sendIt() {
+		var f = document.searchForm;
+		
+		f.action = "<%=cp%>/board/list.jsp";
+		f.submit();
+	}
+
+</script>
+
 </head>
 <body>
 	<div id="bbsList">
 		<div id="bbsList_title">게 시 판</div>
-			<div id="bbsList_header">
-				<div id="leftHeader">
-					<form action="" method="post" name="searchFprm">
-						<select name="searchKey" class="selectField">
-							<option value="subject">제목</option>
-							<option value="name">작성자</option>
-							<option value="content">내용</option>
-						</select>
-						<input type="text" name="searchValue" class="textField"/>
-						<input type="button" value=" 검 색 " class="btn2" onclick=""/>
-					</form>
-				</div>
-				<div id="rightHeader">
-					<input type="button" value="글올리기" class="btn2" onclick="javascript:location.href='<%=cp%>/board/created.jsp';">
-				</div>
+		<div id="bbsList_header">
+			<div id="leftHeader">
+				<form action="" method="post" name="searchForm">
+					<select name="searchKey" class="selectField">
+						<option value="subject">제목</option>
+						<option value="name">작성자</option>
+						<option value="content">내용</option>
+					</select>
+					<input type="text" name="searchValue" class="textField"/>
+					<input type="button" value=" 검 색 " class="btn2" onclick="sendIt()"/>
+				</form>
 			</div>
+			<div id="rightHeader">
+				<input type="button" value="글올리기" class="btn2" onclick="javascript:location.href='<%=cp%>/board/created.jsp';">
+			</div>
+		</div>
 	
 		<div id="bbsList_list">
 			<div id="title">
@@ -67,7 +121,11 @@
 			<%for(BoardDTO dto : lists) { %>
 				<dl>
 					<dd class="num"><%=dto.getNum() %></dd>
-					<dd class="subject"><%=dto.getSubject() %></dd>
+					<dd class="subject">
+						<a href="<%=cp%>/board/article.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
+							<%=dto.getSubject() %>
+						</a>
+					</dd>
 					<dd class="name"><%=dto.getName() %></dd>
 					<dd class="created"><%=dto.getCreated() %></dd>
 					<dd class="hitCount"><%=dto.getHitCount() %></dd>

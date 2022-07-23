@@ -6,11 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.util.DBConn;
-
 public class NaverDAO {
 
-	private Connection conn = DBConn.getConnection();
+	private Connection conn;
 
 	public NaverDAO(Connection conn) {
 		this.conn = conn;
