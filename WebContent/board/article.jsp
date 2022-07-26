@@ -1,3 +1,5 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.net.URLDecoder"%>
 <%@page import="com.board.BoardDTO"%>
 <%@page import="com.util.DBConn"%>
 <%@page import="java.sql.Connection"%>
@@ -10,6 +12,25 @@
 	int num = Integer.parseInt(request.getParameter("num"));
 	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 	
+	// 검색 --------------------------------------------------
+	
+	String searchKey = request.getParameter("searchKey");
+	String searchValue = request.getParameter("searchValue");
+	
+	if (searchValue != null) {
+		
+		// GET방식은 한글을 인코딩해서 보냄
+		if(request.getMethod().equalsIgnoreCase("GET")) {
+			searchValue = URLDecoder.decode(searchValue, "UTF-8");
+		}
+		
+	} else {
+		searchKey = "subject";
+		searchValue = "";
+	}
+		
+	// 검색 --------------------------------------------------
+		
 	Connection conn = DBConn.getConnection();
 	BoardDAO dao = new BoardDAO(conn);
 	
@@ -17,13 +38,20 @@
 	dao.updateHitCount(num);
 	
 	// 글 가져오기
-	BoardDTO dto = dao.getReardData(num);
+	BoardDTO dto = dao.getReadData(num);
 	
 	// 글의 라인수
 	int lineSu = dto.getContent().split("\n").length;
 	
 	//엔터를 <br/>로 처리
 	dto.setContent(dto.getContent().replaceAll("\n", "<br/>"));
+	
+	// 검색
+	String param = "";
+	if (searchValue != null && !searchValue.equals("")){
+		param = "&searchKey=" + searchKey;
+		param += "&searchValue=" + URLEncoder.encode(searchValue, "UTF-8");
+	}
 	
 	DBConn.close();
 %>
@@ -73,11 +101,11 @@
 		</div>
 		<div id="bbsArticle_footer">
 			<div id="leftFooter">
-				<input type="button" value="수정" class="btn2" onclick="location='<%=cp%>/board/updated.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>';"/>
-				<input type="button" value="삭제" class="btn2" onclick="location='<%=cp%>/board/deleted_ok.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>';"/>
+				<input type="button" value="수정" class="btn2" onclick="location='<%=cp%>/board/updated.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%><%=param%>';"/>
+				<input type="button" value="삭제" class="btn2" onclick="location='<%=cp%>/board/deleted_ok.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%><%=param%>';"/>
 			</div>
 			<div id="rightFooter">
-				<input type="button" value="리스트" class="btn2" onclick="location='<%=cp%>/board/list.jsp?pageNum=<%=pageNum%>';"/>
+				<input type="button" value="리스트" class="btn2" onclick="location='<%=cp%>/board/list.jsp?pageNum=<%=pageNum%><%=param%>';"/>
 			</div>
 		</div>
 	</div>

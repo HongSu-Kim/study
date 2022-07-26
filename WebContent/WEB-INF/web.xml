@@ -9,4 +9,63 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+	<!-- servlet : servlet-mapping 1대1로 매칭된다 -->
+	<servlet>
+		<!-- servlet-name : servlet과 servlet-mapping의 이름을 맞춰줘야한다, 다른 servlet과 이름이 중복될수없다 -->
+		<servlet-name>helloServlet</servlet-name>
+		<!-- 찾아갈 파일 위치 -->
+		<servlet-class>com.svt.Test1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>helloServlet</servlet-name>
+		<!-- url -->
+		<url-pattern>/hello</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 1.servletConfig 인터페이스 -->
+  	<!-- 해당서블릿(Class)에서만 사용 가능 -->
+  	<servlet>
+  		<servlet-name>test2Servlet</servlet-name>
+  		<servlet-class>com.svt.Test2</servlet-class>
+  			<!-- 값을 가져감 -->
+  			<init-param>
+  				<param-name>name</param-name>
+  				<param-value>배수지</param-value>
+  			</init-param>
+  			<init-param>
+  				<param-name>age</param-name>
+  				<param-value>27</param-value>
+  			</init-param>
+  	</servlet>
+	<servlet-mapping>
+		<servlet-name>test2Servlet</servlet-name>
+		<url-pattern>/itwill</url-pattern>
+	</servlet-mapping>
+  
+	<!-- 2.ServletContext 인터페이스 -->
+	<!-- Context : 프로젝트 전체에서 사용가능 -->
+	<context-param>
+		<param-name>gender</param-name>
+		<param-value>여자</param-value>
+	</context-param>
+	
+	<servlet>
+		<servlet-name>test3Servlet</servlet-name>
+		<servlet-class>com.svt.Test3</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>test3Servlet</servlet-name>
+		<url-pattern>/ss1</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Servlet 게시판 -->
+	<servlet>
+		<servlet-name>boardServlet</servlet-name>
+		<servlet-class>com.board.BoardServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>boardServlet</servlet-name>
+		<url-pattern>/bbs/*</url-pattern>
+	</servlet-mapping>
 </web-app>

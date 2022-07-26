@@ -8,12 +8,23 @@
 
 	int num = Integer.parseInt(request.getParameter("num"));
 	String pageNum = request.getParameter("pageNum");
+	
+	String searchKey = request.getParameter("searchKey");
+	String searchValue = request.getParameter("searchValue");
 
+	String param = "";
+	
+	if (!searchValue.equals("")){
+
+		param = "&searchKey=" + searchKey;
+		param += "&searchValue=" + searchValue;
+	}
+	
 	Connection conn = DBConn.getConnection();
 
 	BoardDAO dao = new BoardDAO(conn);
 	
 	dao.deleteData(num);
 	
-	response.sendRedirect("list.jsp?pageNum=" + pageNum);
+	response.sendRedirect("list.jsp?pageNum=" + pageNum + param);
 %>

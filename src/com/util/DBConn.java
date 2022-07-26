@@ -8,6 +8,7 @@ public class DBConn {
 	private static Connection conn = null;
 
 	public static Connection getConnection() {
+		;
 
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "suzi";
@@ -37,14 +38,17 @@ public class DBConn {
 		}
 
 		try {
+
 			if (!conn.isClosed()) {
 				conn.close();
 			}
+
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
 
 		conn = null;
+
 	}
 
 }
