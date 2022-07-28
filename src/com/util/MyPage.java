@@ -37,7 +37,6 @@ public class MyPage {
 		// list.jsp?pageNum=2
 		// list.jsp?searchKey=subject&searchValue=aa&pageNum=2
 		if (listUrl.indexOf("?") != -1) {
-
 			listUrl = listUrl + "&";
 		} else {
 			listUrl = listUrl + "?";

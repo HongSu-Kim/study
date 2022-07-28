@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -12,20 +13,30 @@
 <link rel="stylesheet" type="text/css" href="<%=cp%>/boardTest/css/style.css"/>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/boardTest/css/list.css"/>
 
+<script type="text/javascript">
+	function sendIt() {
+		var f = document.searchForm;
+		
+		f.action = "<%=cp%>/bbs/list.do"
+		f.submit();
+		
+	}
+</script>
+
 </head>
 <body>
 	<div id="bbsList">
 		<div id="bbsList_title">게 시 판</div>
 			<div id="bbsList_header">
 				<div id="leftHeader">
-					<form action="" method="post" name="searchFprm">
+					<form action="" method="post" name="searchForm">
 						<select name="searchKey" class="selectField">
 							<option value="subject">제목</option>
 							<option value="name">작성자</option>
 							<option value="content">내용</option>
 						</select>
 						<input type="text" name="searchValue" class="textField"/>
-						<input type="button" value=" 검 색 " class="btn2" onclick=""/>
+						<input type="button" value=" 검 색 " class="btn2" onclick="sendIt();"/>
 					</form>
 				</div>
 				<div id="rightHeader">
@@ -44,17 +55,26 @@
 				</dl>
 			</div>
 			<div id="lists">
-				<dl>
-					<dd class="num">1</dd>
-					<dd class="subject">게시판 만들기</dd>
-					<dd class="name">배수지</dd>
-					<dd class="created">2021-07-21</dd>
-					<dd class="hitCount">10</dd>
-				</dl>
+				<c:forEach var="dto" items="${lists }">
+					<dl>
+						<dd class="num">${dto.num }</dd>
+						<dd class="subject">
+							<a href="${articleUrl }&num=${dto.num }">${dto.subject }</a>
+						</dd>
+						<dd class="name">${dto.name }</dd>
+						<dd class="created">${dto.created }</dd>
+						<dd class="hitCount">${dto.hitCount }</dd>
+					</dl>
+				</c:forEach>
 			</div>
 			<div id="footer">
 				<p>
-					1 2 3
+					<c:if test="${dataCount != 0 }">
+						${pageIndexList }
+					</c:if>
+					<c:if test="${dataCount == 0 }">
+						등록된게시물이 없습니다.
+					</c:if>
 				</p>
 			</div>
 		</div>

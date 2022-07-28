@@ -68,4 +68,41 @@
 		<servlet-name>boardServlet</servlet-name>
 		<url-pattern>/bbs/*</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Servlet 성적처리 -->
+	<servlet>
+		<servlet-name>scoreServlet</servlet-name>
+		<servlet-class>com.score.ScoreServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>scoreServlet</servlet-name>
+		<url-pattern>/sung/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Servlet 회원가입 -->
+	<servlet>
+		<servlet-name>memberServlet</servlet-name>
+		<servlet-class>com.join.MemberServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>memberServlet</servlet-name>
+		<url-pattern>/join/*</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </web-app>
