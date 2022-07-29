@@ -58,6 +58,7 @@
 	</c:choose>
 
 	5. <a href="<%=cp%>/bbs/list.do">게시판(BOARD) - SERVLET</a><br/>
+	6. <a href="<%=cp%>/image/list.do">이미지 게시판(IMAGETEST) - SERVLET</a><br/>
 	
 	<br/><hr/><br/>
 	
