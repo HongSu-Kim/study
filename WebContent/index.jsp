@@ -8,28 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
-<script type="text/javascript">
-	
-	//var userAgent = navigator.userAgent;
-	//alert(userAgent);
-	
-	var smartPhones = [
-		'iphone','android','ipod','windows ce','blackberry','nokia','webos',
-		'opera mini','sonyericsson','opera mobi'
-	];
-	
-	for(var i in smartPhones){
-		
-		if(navigator.userAgent.toLowerCase().match(new RegExp(smartPhones[i]))){
-			alert('어머 이건 스마트 폰이네...');
-			document.location = 'http://m.naver.com';
-		}
-	}	
-	
-</script>
-
+<title>index</title>
 </head>
 <body>
 
@@ -74,9 +53,15 @@
 	</c:choose>
 	
 	<br/><hr/><br/>
+	
 	<h3>hong</h3>
 	1. <a href="<%=cp%>/naver/list.jsp">네이버 회원관리(NAVER) - JSP</a><br/>
 	2. <a href="/hong/HBBS/main/main.do">게시판(HBBS) - SERVLET</a><br/>
+
+	<br/><hr/><br/>
+	
+	<h3>shop</h3>
+	1. <a href="/shoppingMall/shop/member/test.do">쇼핑몰(MEMBER) - SERVLET</a><br/>
 
 </body>
 </html>
